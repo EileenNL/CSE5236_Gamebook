@@ -21,6 +21,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
         textView.setText(message);
+        BlankFragment fragmentDemo = (BlankFragment)
+                getSupportFragmentManager().findFragmentById(R.id.BlankFragment);
+        fragmentDemo.message(textView, message);
     }
 
     protected void onPause() {
