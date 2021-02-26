@@ -3,6 +3,7 @@ package com.example.cse5236;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -21,6 +22,17 @@ public class EnterName extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.editTextName);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
+        Log.i("EnterName", "Proceeding to display message.");
         startActivity(intent);
+    }
+
+    protected void onPause() {
+        super.onPause();
+        Log.i("EnterName", "onPause called");
+    }
+
+    protected void onResume() {
+        super.onResume();
+        Log.i("EnterName", "onResume called");
     }
 }
