@@ -63,7 +63,7 @@ public class BlankFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_blank, container, false);
     }
 
-    public void message(TextView textView, String message){
-        textView.setText(message);
+    public void message(TextView textView, int p){
+        textView.setText(getString(p));
     }
 }

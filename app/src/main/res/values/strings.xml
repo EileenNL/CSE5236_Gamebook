@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">CSE5236</string>
+    <string name="app_name">Gamebook</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fork">You come across a fork in the road</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="seeZombie">You see a zombie</string>
+    <string name="run">Run</string>
+    <string name="fight">Fight</string>
+    <string name="survive">You survive</string>
+    <string name="dead">You died</string>
+    <string name="turnZombie">You get bit by a zombie and turn into one</string>
 </resources>

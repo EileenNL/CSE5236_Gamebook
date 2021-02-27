@@ -10,18 +10,44 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="154dp"
-        android:layout_marginEnd="181dp"
-        android:text="First prompt"
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="164dp"
+        android:text="Hello"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/BlankFragment"
+        app:layout_constraintStart_toStartOf="@+id/BlankFragment"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintVertical_bias="0.279" />
 
     <fragment
-        android:name="com.example.cse5236.BlankFragment"
         android:id="@+id/BlankFragment"
+        android:name="com.example.cse5236.BlankFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="327dp"
+        android:layout_marginBottom="356dp"
+        android:text="@string/left"
+        app:layout_constraintBottom_toBottomOf="@+id/BlankFragment"
+        app:layout_constraintStart_toStartOf="@+id/BlankFragment"
+        app:layout_constraintTop_toTopOf="@+id/BlankFragment" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="327dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="356dp"
+        android:text="@string/right"
+        app:layout_constraintBottom_toBottomOf="@+id/BlankFragment"
+        app:layout_constraintEnd_toEndOf="@+id/BlankFragment"
+        app:layout_constraintTop_toTopOf="@+id/BlankFragment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
