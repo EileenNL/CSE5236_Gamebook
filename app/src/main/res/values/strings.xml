@@ -12,7 +12,7 @@
     <string name="turnZombie">You get bit by a zombie and turn into one</string>
     <string name="Name"></string>
     <string name="settings">Settings</string>
-    <string name="edit">Edit Progress</string>
+    <string name="edit">Reset Score Progress</string>
     <string name="startOver">End Game</string>
     <string name="returnGame">Return</string>
 </resources>

@@ -23,6 +23,7 @@ public class EnterName extends AppCompatActivity {
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
         Log.i("EnterName", "Proceeding to display message.");
+        User user = User.writeNewUser(message, 12);
         startActivity(intent);
     }
 

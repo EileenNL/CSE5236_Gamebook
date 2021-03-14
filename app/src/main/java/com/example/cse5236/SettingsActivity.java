@@ -19,6 +19,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.example.cse5236.DisplayMessageActivity.EXTRA_MESSAGE2;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -35,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
         String name = intent.getStringExtra(EXTRA_MESSAGE2);
         TextView textView = findViewById(R.id.textView2);
 
-        myref.child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        myref.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -43,11 +46,10 @@ public class SettingsActivity extends AppCompatActivity {
                 }
                 else {
                     score = String.valueOf(task.getResult().getValue());
+                    textView.setText(name+": "+score);
                 }
             }
         });
-
-        textView.setText(name+": "+score);
 
         edit = (Button) findViewById(R.id.button3);
         startOver = (Button) findViewById(R.id.button5);
@@ -56,20 +58,26 @@ public class SettingsActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myref.child(name).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        dataSnapshot.getRef().child(name).setValue(0);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Throwable databaseError = null;
-                        Log.d("User", databaseError.getMessage());
-                    }
-                });
+                myref.child("users").child(name).setValue(0);
+                textView.setText(name+": "+0);
             }
         });
 
+        startOver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myref.child("users").child(name).removeValue();
+                Intent intent = new Intent(SettingsActivity.this, EnterName.class);
+                SettingsActivity.this.startActivity(intent);
+            }
+        });
+
+        returnGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SettingsActivity.this, DisplayMessageActivity.class);
+                SettingsActivity.this.startActivity(intent);
+            }
+        });
     }
 }

@@ -44,7 +44,7 @@ public class User {
         User user = new User(name, score);
 //        Map<String, Integer> m = new HashMap<>();
 //        m.put(name, score);
-        mDatabase.child(user.getName()).setValue(user.getScore());
+        mDatabase.child("users").child(name).setValue(score);
         return user;
     }
     public String getId() {

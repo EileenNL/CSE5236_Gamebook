@@ -1,5 +1,6 @@
 package com.example.cse5236;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,7 +23,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
     private Button mOption2;
     private Button mSettings;
     private Prompt p = generatePromptTree();;
-    public User user;
+    private DatabaseReference myref = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +36,23 @@ public class DisplayMessageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra(EnterName.EXTRA_MESSAGE);
         String message = "Hi "+ intent.getStringExtra(EnterName.EXTRA_MESSAGE) + "! Welcome to Gamebook!";
-        //User user = new User(name, 0);
-        user = User.writeNewUser(name, 12);
         TextView nameText = findViewById(R.id.textView4);
-        nameText.setText(user.getName() + ": " + user.getScore());
+        //User user = new User(name, 0);
+            myref.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (!task.isSuccessful()) {
+                        Log.e("firebase", "Error getting data", task.getException());
+                    }
+                    else {
+                        String score = String.valueOf(task.getResult().getValue());
+                        nameText.setText(name+": "+score);
+                    }
+                }
+            });
+
+
+        //nameText.setText(user.getName() + ": " + user.getScore());
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
@@ -86,15 +103,13 @@ public class DisplayMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayMessageActivity.this, SettingsActivity.class);
-                intent.putExtra(EXTRA_MESSAGE2, user.getName());
+                intent.putExtra(EXTRA_MESSAGE2, name);
                 DisplayMessageActivity.this.startActivity(intent);
             }
         });
     }
 
-    public User getUser() {
-        return user;
-    }
+
 
     private Prompt generatePromptTree(){
         Prompt survive = new Prompt(R.string.survive, 0, 0, null, null);
