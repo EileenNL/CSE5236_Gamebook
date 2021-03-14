@@ -7,7 +7,7 @@
     <string name="seeZombie">You see a zombie</string>
     <string name="run">Run</string>
     <string name="fight">Fight</string>
-    <string name="survive">You survive</string>
+    <string name="survive">You kill a zombie</string>
     <string name="dead">You died</string>
     <string name="turnZombie">You get bit by a zombie and turn into one</string>
     <string name="Name"></string>

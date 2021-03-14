@@ -56,7 +56,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
-        textView.setText(message);
+        //textView.setText(message);
         BlankFragment fragmentDemo = (BlankFragment)
                 getSupportFragmentManager().findFragmentById(R.id.BlankFragment);
 
@@ -80,6 +80,22 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     ViewGroup layout2 = (ViewGroup) mOption2.getParent();
                     layout.removeView(mOption2);
                 }
+                if(p.mPrompt == R.string.survive){
+                    myref.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (!task.isSuccessful()) {
+                                Log.e("firebase", "Error getting data", task.getException());
+                            }
+                            else {
+                                int score = Integer.valueOf(String.valueOf(task.getResult().getValue()));
+                                score++;
+                                myref.child("users").child(name).setValue(score);
+                                nameText.setText(name+": "+score);
+                            }
+                        }
+                    });
+                }
             }
         });
 
@@ -96,6 +112,22 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     layout.removeView(mOption1);
                     ViewGroup layout2 = (ViewGroup) mOption2.getParent();
                     layout.removeView(mOption2);
+                }
+                if(p.mPrompt == R.string.survive){
+                    myref.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DataSnapshot> task) {
+                            if (!task.isSuccessful()) {
+                                Log.e("firebase", "Error getting data", task.getException());
+                            }
+                            else {
+                                int score = Integer.valueOf(String.valueOf(task.getResult().getValue()));
+                                score++;
+                                myref.child("users").child(name).setValue(score);
+                                nameText.setText(name+": "+score);
+                            }
+                        }
+                    });
                 }
             }
         });
@@ -115,7 +147,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
         Prompt survive = new Prompt(R.string.survive, 0, 0, null, null);
         Prompt dead = new Prompt(R.string.dead, 0, 0, null, null);
         Prompt turnZombie = new Prompt(R.string.turnZombie, 0, 0, null, null);
-        Prompt left = new Prompt(R.string.seeZombie, R.string.run, R.string.fight, survive, dead);
+        Prompt left = new Prompt(R.string.seeZombie, R.string.run, R.string.fight, dead, survive);
         Prompt right = new Prompt(R.string.turnZombie, 0, 0, null, null);
         p = new Prompt(R.string.fork, R.string.left, R.string.right, left, right);
         return p;
