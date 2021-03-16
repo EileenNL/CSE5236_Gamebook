@@ -61,11 +61,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
-<<<<<<< Updated upstream
-        //textView.setText(message);
-=======
         textView.setText(message[0]);
->>>>>>> Stashed changes
         BlankFragment fragmentDemo = (BlankFragment)
                 getSupportFragmentManager().findFragmentById(R.id.BlankFragment);
 
@@ -90,7 +86,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     layout.removeView(mOption2);
                 }
                 if(p.mPrompt == R.string.survive){
-                    myref.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                             if (!task.isSuccessful()) {
@@ -99,8 +95,8 @@ public class DisplayMessageActivity extends AppCompatActivity {
                             else {
                                 int score = Integer.valueOf(String.valueOf(task.getResult().getValue()));
                                 score++;
-                                myref.child("users").child(name).setValue(score);
-                                nameText.setText(name+": "+score);
+                                myref.child("users").child(user[0].getId()).setValue(score);
+                                nameText.setText(user[0].getName() + ": " + score);
                             }
                         }
                     });
@@ -123,7 +119,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     layout.removeView(mOption2);
                 }
                 if(p.mPrompt == R.string.survive){
-                    myref.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DataSnapshot> task) {
                             if (!task.isSuccessful()) {
@@ -132,8 +128,8 @@ public class DisplayMessageActivity extends AppCompatActivity {
                             else {
                                 int score = Integer.valueOf(String.valueOf(task.getResult().getValue()));
                                 score++;
-                                myref.child("users").child(name).setValue(score);
-                                nameText.setText(name+": "+score);
+                                myref.child("users").child(user[0].getId()).setValue(score);
+                                nameText.setText(user[0].getName() + ": " + score);
                             }
                         }
                     });
