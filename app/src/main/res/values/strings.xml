@@ -13,6 +13,6 @@
     <string name="Name"></string>
     <string name="settings">Settings</string>
     <string name="edit">Reset Score Progress</string>
-    <string name="startOver">End Game</string>
+    <string name="startOver">Delete Current User</string>
     <string name="returnGame">Return</string>
 </resources>

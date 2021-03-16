@@ -3,26 +3,30 @@ package com.example.cse5236;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class User {
+public class User implements Serializable {
     private String mId;
     private String mName;
     private int mScore;
+    private String mCurrent;
 
-    //private Prompt mCurrent;
     public static DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
-    public User(){
+    public User(){}
 
-    }
-    public User(String name, int score){
+    public User(String name, int score, Prompt prompt){
         mName = name;
         mScore = score;
         mId = UUID.randomUUID().toString();
-        //mCurrent = prompt;
+        if(prompt != null){
+            mCurrent = prompt.Id;
+        } else{
+            mCurrent = null;
+        }
     }
 
     public String getName() {
@@ -40,15 +44,16 @@ public class User {
     public void setScore(int score) {
         mScore = score;
     }
-    public static User writeNewUser(String name, int score) {
-        User user = new User(name, score);
-//        Map<String, Integer> m = new HashMap<>();
-//        m.put(name, score);
-        mDatabase.child("users").child(name).setValue(score);
-        return user;
+
+    public void writeNewUser() {
+        mDatabase.child("users").child(this.mId).setValue(this);
     }
     public String getId() {
         return mId;
+    }
+
+    public void setId(String id) {
+        mId = id;
     }
 //
 //    public void setCurrent(Prompt current) {

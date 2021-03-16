@@ -35,18 +35,22 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         Intent intent = getIntent();
-        String name = intent.getStringExtra(EXTRA_MESSAGE2);
         TextView textView = findViewById(R.id.textView2);
 
-        myref.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        final String[] message = new String[1];
+        final User[] user = new User[1];
+
+        user[0] = (User) intent.getSerializableExtra(EXTRA_MESSAGE2);
+
+        myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
+                if (task.isSuccessful()) {
+                    user[0] = task.getResult().getValue(User.class);
+                    textView.setText(user[0].getName() + ": " + user[0].getScore());
                 }
                 else {
-                    score = String.valueOf(task.getResult().getValue());
-                    textView.setText(name+": "+score);
+                    Log.e("firebase", "Error getting data", task.getException());
                 }
             }
         });
@@ -58,15 +62,16 @@ public class SettingsActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myref.child("users").child(name).setValue(0);
-                textView.setText(name+": "+0);
+                user[0].setScore(0);
+                myref.child("users").child(user[0].getId()).setValue(user[0]);
+                textView.setText(user[0].getName() + ": " + user[0].getScore());
             }
         });
 
         startOver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myref.child("users").child(name).removeValue();
+                myref.child("users").child(user[0].getId()).removeValue();
                 Intent intent = new Intent(SettingsActivity.this, EnterName.class);
                 SettingsActivity.this.startActivity(intent);
             }

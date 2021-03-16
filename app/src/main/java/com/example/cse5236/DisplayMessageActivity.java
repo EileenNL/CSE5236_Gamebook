@@ -27,36 +27,45 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_message);
 
+        final String[] message = new String[1];
+        final User[] user = new User[1];
+
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
-        String name = intent.getStringExtra(EnterName.EXTRA_MESSAGE);
-        String message = "Hi "+ intent.getStringExtra(EnterName.EXTRA_MESSAGE) + "! Welcome to Gamebook!";
+        user[0] = (User) intent.getSerializableExtra(EnterName.EXTRA_MESSAGE);
+
         TextView nameText = findViewById(R.id.textView4);
-        //User user = new User(name, 0);
-            myref.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (!task.isSuccessful()) {
-                        Log.e("firebase", "Error getting data", task.getException());
-                    }
-                    else {
-                        String score = String.valueOf(task.getResult().getValue());
-                        nameText.setText(name+": "+score);
-                    }
+        myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    user[0] = task.getResult().getValue(User.class);
+                    Log.i("TESTTHING2", "ID: " + user[0].getId());
+                    nameText.setText(user[0].getName() + ": " + user[0].getScore());
+                    message[0] = "Hi "+ intent.getStringExtra(EnterName.EXTRA_MESSAGE) + "! Welcome to Gamebook!";
                 }
-            });
+                else {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+            }
+        });
+
+        //User user = new User(name, 0);
+
 
 
         //nameText.setText(user.getName() + ": " + user.getScore());
 
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
+<<<<<<< Updated upstream
         //textView.setText(message);
+=======
+        textView.setText(message[0]);
+>>>>>>> Stashed changes
         BlankFragment fragmentDemo = (BlankFragment)
                 getSupportFragmentManager().findFragmentById(R.id.BlankFragment);
 
@@ -135,8 +144,10 @@ public class DisplayMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayMessageActivity.this, SettingsActivity.class);
-                intent.putExtra(EXTRA_MESSAGE2, name);
-                DisplayMessageActivity.this.startActivity(intent);
+                intent.putExtra(EXTRA_MESSAGE2, user[0]);
+                Log.i("TESTTEST", user[0].getName());
+                Log.i("TESTTEST", user[0].getId());
+                startActivity(intent);
             }
         });
     }

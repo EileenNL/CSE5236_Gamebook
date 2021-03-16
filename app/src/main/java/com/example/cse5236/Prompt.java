@@ -1,7 +1,10 @@
 package com.example.cse5236;
 
+import java.util.UUID;
+
 public class Prompt {
 
+    String Id;
     int mPrompt;
     int mOption1;
     int mOption2;
@@ -9,6 +12,7 @@ public class Prompt {
     Prompt mOption2Prompt;
 
     public Prompt (int prompt, int option1, int option2, Prompt option1Prompt, Prompt option2Prompt){
+        Id = UUID.randomUUID().toString();
         mPrompt = prompt;
         mOption1 = option1;
         mOption2 = option2;
