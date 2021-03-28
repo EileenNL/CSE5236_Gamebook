@@ -8,6 +8,10 @@
     <string name="run">Run</string>
     <string name="fight">Fight</string>
     <string name="survive">You kill a zombie. \n You hear the voices of humans in the distance.</string>
+    <string name="walk">Walk towards voices</string>
+    <string name="walk1">You walk towards the voices and find a group of survivors living in an abandoned building.</string>
+    <string name="ignore">Ignore voices</string>
+    <string name="ignore1">You ignore the voices and continue walking.</string>
     <string name="dead">The zombie kills you :(</string>
 
     <string name="person">You see someone running toward you in the distance.</string>

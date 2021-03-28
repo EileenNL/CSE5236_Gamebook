@@ -85,21 +85,8 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     ViewGroup layout2 = (ViewGroup) mOption2.getParent();
                     layout.removeView(mOption2);
                 }
-                if(p.mPrompt == R.string.survive){
-                    myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DataSnapshot> task) {
-                            if (!task.isSuccessful()) {
-                                Log.e("firebase", "Error getting data", task.getException());
-                            }
-                            else {
-                                int score = Integer.valueOf(String.valueOf(task.getResult().getValue()));
-                                score++;
-                                myref.child("users").child(user[0].getId()).setValue(score);
-                                nameText.setText(user[0].getName() + ": " + score);
-                            }
-                        }
-                    });
+                if (p.mPrompt == R.string.survive){
+                    incrementScore(user, nameText);
                 }
                 if (p.mPrompt == R.string.pipe1){
                     incrementScore(user, nameText);
@@ -121,21 +108,8 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     ViewGroup layout2 = (ViewGroup) mOption2.getParent();
                     layout.removeView(mOption2);
                 }
-                if(p.mPrompt == R.string.survive){
-                    myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DataSnapshot> task) {
-                            if (!task.isSuccessful()) {
-                                Log.e("firebase", "Error getting data", task.getException());
-                            }
-                            else {
-                                int score = Integer.valueOf(String.valueOf(task.getResult().getValue()));
-                                score++;
-                                myref.child("users").child(user[0].getId()).setValue(score);
-                                nameText.setText(user[0].getName() + ": " + score);
-                            }
-                        }
-                    });
+                if (p.mPrompt == R.string.survive){
+                    incrementScore(user, nameText);
                 }
                 if (p.mPrompt == R.string.pipe1){
                     incrementScore(user, nameText);
@@ -158,7 +132,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
     private Prompt generatePromptTree(){
 
-        Prompt survive = new Prompt(R.string.survive, 0, 0, null, null);
+        Prompt walk = new Prompt(R.string.walk1, 0,0,null,null);
+        Prompt ignore = new Prompt(R.string.ignore1, 0,0,null,null);
+        Prompt survive = new Prompt(R.string.survive, R.string.walk, R.string.ignore, walk, ignore);
         Prompt dead = new Prompt(R.string.dead, 0, 0, null, null);
         Prompt left = new Prompt(R.string.seeZombie, R.string.run, R.string.fight, dead, survive);
 
@@ -192,19 +168,20 @@ public class DisplayMessageActivity extends AppCompatActivity {
     }
 
     private void incrementScore(User[] user, TextView nameText){
-        myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+ /*       myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting data", task.getException());
                 }
-                else {
-                    int score = Integer.valueOf(String.valueOf(task.getResult().getValue()));
+                else {*/
+                    int score = user[0].getScore();
                     score++;
-                    myref.child("users").child(user[0].getId()).setValue(score);
-                    nameText.setText(user[0].getName() + ": " + score);
-                }
+                    user[0].setScore(score);
+                    myref.child("users").child(user[0].getId()).setValue(user[0]);
+                    nameText.setText(user[0].getName() + ": " + user[0].getScore());
+                /*}
             }
-        });
+        });*/
     }
 }
