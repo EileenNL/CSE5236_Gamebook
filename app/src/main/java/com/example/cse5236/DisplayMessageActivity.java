@@ -101,6 +101,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
                         }
                     });
                 }
+                if (p.mPrompt == R.string.pipe1){
+                    incrementScore(user, nameText);
+                }
             }
         });
 
@@ -134,6 +137,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
                         }
                     });
                 }
+                if (p.mPrompt == R.string.pipe1){
+                    incrementScore(user, nameText);
+                }
             }
         });
         mSettings.setOnClickListener(new View.OnClickListener() {
@@ -151,11 +157,26 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
 
     private Prompt generatePromptTree(){
+
         Prompt survive = new Prompt(R.string.survive, 0, 0, null, null);
         Prompt dead = new Prompt(R.string.dead, 0, 0, null, null);
-        Prompt turnZombie = new Prompt(R.string.turnZombie, 0, 0, null, null);
         Prompt left = new Prompt(R.string.seeZombie, R.string.run, R.string.fight, dead, survive);
-        Prompt right = new Prompt(R.string.turnZombie, 0, 0, null, null);
+
+        Prompt eatBrains = new Prompt(R.string.eatBrains1,0,0,null,null);
+        Prompt eatBrainsNot = new Prompt(R.string.eatBrainsNot1, 0,0,null,null);
+        Prompt bushes = new Prompt(R.string.bushes1,0,0,null,null);
+        Prompt turnZombie = new Prompt(R.string.turnZombie, R.string.eatBrains, R.string.eatBrainsNot, eatBrains, eatBrainsNot);
+        Prompt look = new Prompt(R.string.look, R.string.bushes, R.string.emptyHouse, bushes,turnZombie);
+
+        Prompt goBack = new Prompt(R.string.goBack1, 0, 0, null, null);
+        Prompt town = new Prompt(R.string.town1, 0, 0, null,null);
+        Prompt brick = new Prompt(R.string.brick1, 0,0,null,null);
+        Prompt pipe = new Prompt(R.string.pipe1,R.string.goBack,R.string.town,goBack,town);
+        Prompt findHelp = new Prompt(R.string.findHelp1,R.string.brick,R.string.pipe,brick,pipe);
+        Prompt treat = new Prompt(R.string.treat1,R.string.ally, R.string.alone,null,null);
+        Prompt help1 = new Prompt(R.string.help1, R.string.treat, R.string.findHelp, treat,findHelp);
+        Prompt right = new Prompt(R.string.person, R.string.hide, R.string.help, look, help1);
+
         p = new Prompt(R.string.fork, R.string.left, R.string.right, left, right);
         return p;
     }
@@ -168,5 +189,22 @@ public class DisplayMessageActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.i("DisplayMessage", "onResume called");
+    }
+
+    private void incrementScore(User[] user, TextView nameText){
+        myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    int score = Integer.valueOf(String.valueOf(task.getResult().getValue()));
+                    score++;
+                    myref.child("users").child(user[0].getId()).setValue(score);
+                    nameText.setText(user[0].getName() + ": " + score);
+                }
+            }
+        });
     }
 }
