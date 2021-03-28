@@ -8,9 +8,20 @@
     <string name="run">Run</string>
     <string name="fight">Fight</string>
     <string name="survive">You kill a zombie. \n You hear the voices of humans in the distance.</string>
-    <string name="walk">Walk towards voices</string>
+    <string name="walk">Walk to voices</string>
     <string name="walk1">You walk towards the voices and find a group of survivors living in an abandoned building.</string>
-    <string name="ignore">Ignore voices</string>
+    <string name="talk">Talk to them</string>
+    <string name="talk1">You introduce yourself as a survivor. The group tells you that they have found a cure to the zombie virus and offer you a vaccine.</string>
+    <string name="accept">Accept</string>
+    <string name="accept1">You accept the vaccine and join the group. You and the others develop an antidote and try to administer it to as many zombies as possible while also recruiting other survivors to the group. 5 years later the zombie apocalypse is finally over.</string>
+    <string name="refuse">Refuse</string>
+    <string name="refuse1">You refuse the vaccine and walk out. As you walk, you come across an empty house.</string>
+    <string name="enterHouse">Enter house</string>
+    <string name="continueWalking">Continue walking</string>
+    <string name="continueWalking1">Continue walking</string>
+    <string name="steal">Steal their supplies</string>
+    <string name="steal1">You attempt to steal their supplies but they stop and restrain you. You get thrown to a group od hungry zombies and they eat you :(</string>
+    <string name="ignore">Ignore it</string>
     <string name="ignore1">You ignore the voices and continue walking.</string>
     <string name="dead">The zombie kills you :(</string>
 
@@ -21,7 +32,7 @@
     <string name="emptyHouse">Empty House</string>
     <string name="turnZombie">You enter the house and find out that it is actually infested with zombies! You get bit by a zombie and turn into one :(</string>
     <string name="eatBrains">Eat brains</string>
-    <string name="eatBrains1">You live the rest of your life happily as a zombie</string>
+    <string name="eatBrains1">You live the rest of your life happily as a zombie :)</string>
     <string name="eatBrainsNot">Don\'t eat brains</string>
     <string name="eatBrainsNot1">Your zombie friends shun and abandon you. \n You die alone from hunger as a lonely and misunderstood zombie :(</string>
 
@@ -40,9 +51,10 @@
     <string name="town">Walk into town</string>
     <string name="town1">As you walk into town you notice that there are no people around.</string>
     <string name="goBack">Go back</string>
-    <string name="goBack1">You run back towards </string>
-
+    <string name="goBack1">You run back towards the injured person and see them being eaten by a zombie.</string>
+    <string name="run1"></string>
     <string name="help">Help them</string>
+
     <string name="Name"></string>
     <string name="settings">Settings</string>
     <string name="edit">Reset Score Progress</string>
