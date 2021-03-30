@@ -94,6 +94,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
                 if (p.mPrompt == R.string.lucky){
                     incrementScore(user, nameText);
                 }
+                if(p.mPrompt == R.string.squareUp1){
+                    incrementScore(user, nameText);
+                }
             }
         });
 
@@ -120,6 +123,9 @@ public class DisplayMessageActivity extends AppCompatActivity {
                 if (p.mPrompt == R.string.lucky){
                     incrementScore(user, nameText);
                 }
+                if(p.mPrompt == R.string.squareUp1){
+                    incrementScore(user, nameText);
+                }
             }
         });
         mSettings.setOnClickListener(new View.OnClickListener() {
@@ -138,31 +144,50 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
     private Prompt generatePromptTree(){
         Prompt dead = new Prompt(R.string.dead, 0, 0, null, null);
-
+        Prompt leave = new Prompt(R.string.leave1, 0, 0, null, null);
+        Prompt drop = new Prompt(R.string.pick1,0,0,null,null);
         Prompt eatBrains = new Prompt(R.string.eatBrains1,0,0,null,null);
-        Prompt eatBrainsNot = new Prompt(R.string.eatBrainsNot1, 0,0,null,null);
+        Prompt brick = new Prompt(R.string.brick1, 0,0,null,null);
+        Prompt accept = new Prompt(R.string.accept1,0,0,null,null);
         Prompt bushes = new Prompt(R.string.bushes1,0,0,null,null);
+        Prompt steal = new Prompt(R.string.steal1,0,0,null,null);
+        Prompt eatBrainsNot = new Prompt(R.string.eatBrainsNot1, 0,0,null,null);
+        Prompt run2 = new Prompt(R.string.run2,0,0,null,null);
+        Prompt accept2 = new Prompt(R.string.accept2, 0,0,null,null);
+        Prompt refuse2 = new Prompt(R.string.refuse2,0,0,null,null);
+        Prompt trip = new Prompt(R.string.trip,0,0,null,null);
+        Prompt alone = new Prompt(R.string.alone1,0,0,null,null);
+
         Prompt turnZombie = new Prompt(R.string.turnZombie, R.string.eatBrains, R.string.eatBrainsNot, eatBrains, eatBrainsNot);
         Prompt look = new Prompt(R.string.look, R.string.bushes, R.string.emptyHouse, bushes,turnZombie);
+        Prompt stay = new Prompt(R.string.stay1, R.string.accept, R.string.refuse, accept2, refuse2);
+        Prompt follow = new Prompt(R.string.follow1, R.string.run, R.string.stay, run2, stay);
+        Prompt food = new Prompt(R.string.offerFood1, R.string.eatBrains, R.string.eatBrainsNot, eatBrains, eatBrainsNot);
+        Prompt money = new Prompt(R.string.offerMoney1, R.string.follow, R.string.run,follow, run2);
+        Prompt befriend = new Prompt(R.string.befriend1,R.string.offerFood, R.string.offerMoney,food, money );
 
-        Prompt lucky = new Prompt(R.string.lucky,0,0,null,null);
+        Prompt ignore = new Prompt(R.string.ignore1, R.string.befriend,R.string.attack,befriend,dead);
+        Prompt squareUp = new Prompt(R.string.squareUp1,R.string.break1,R.string.continueWalking,bushes,ignore);
+
+        Prompt lucky = new Prompt(R.string.lucky,R.string.squareUp,R.string.run,squareUp,trip);
         Prompt cont = new Prompt(R.string.continueWalking1,R.string.squareUp,R.string.run,dead,lucky);
-        Prompt accept = new Prompt(R.string.accept1,0,0,null,null);
         Prompt refuse = new Prompt(R.string.refuse1,R.string.enterHouse,R.string.continueWalking,turnZombie,cont);
-
         Prompt talk = new Prompt(R.string.talk1,R.string.accept,R.string.refuse,accept,refuse);
-        Prompt steal = new Prompt(R.string.steal1,0,0,null,null);
         Prompt walk = new Prompt(R.string.walk1, R.string.talk,R.string.steal,talk,steal);
-        Prompt ignore = new Prompt(R.string.ignore1, 0,0,null,null);
+
         Prompt survive = new Prompt(R.string.survive, R.string.walk, R.string.ignore, walk, ignore);
         Prompt left = new Prompt(R.string.seeZombie, R.string.run, R.string.fight, dead, survive);
 
-        Prompt goBack = new Prompt(R.string.goBack1, 0, 0, null, null);
-        Prompt town = new Prompt(R.string.town1, 0, 0, null,null);
-        Prompt brick = new Prompt(R.string.brick1, 0,0,null,null);
+        Prompt cure = new Prompt(R.string.lookcure1,R.string.pick,R.string.leave,drop,leave);
+        Prompt papers = new Prompt(R.string.papers, R.string.lookcure, R.string.leave,cure,leave);
+
+        Prompt goBack = new Prompt(R.string.goBack1, R.string.help, R.string.run, dead, lucky);
+        Prompt town = new Prompt(R.string.town1, R.string.building, R.string.house, papers,turnZombie);
         Prompt pipe = new Prompt(R.string.pipe1,R.string.goBack,R.string.town,goBack,town);
         Prompt findHelp = new Prompt(R.string.findHelp1,R.string.brick,R.string.pipe,brick,pipe);
-        Prompt treat = new Prompt(R.string.treat1,R.string.ally, R.string.alone,null,null);
+
+        Prompt group = new Prompt(R.string.ally1, R.string.house, R.string.building, turnZombie, papers);
+        Prompt treat = new Prompt(R.string.treat1,R.string.ally, R.string.alone,group,alone);
         Prompt help1 = new Prompt(R.string.help1, R.string.treat, R.string.findHelp, treat,findHelp);
         Prompt right = new Prompt(R.string.person, R.string.hide, R.string.help, look, help1);
 

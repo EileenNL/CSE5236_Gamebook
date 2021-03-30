@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gamebook</string>
+    <string name="app_name">Zombie Gamebook</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="fork">You wake up in the middle of a zombie apocalypse. \n You go outside and come across a fork in the road</string>
     <string name="left">Left</string>
@@ -25,9 +25,27 @@
     <string name="steal">Steal their supplies</string>
     <string name="steal1">You attempt to steal their supplies but they stop and restrain you. You get thrown to a group of hungry zombies and they eat you :(</string>
     <string name="ignore">Ignore it</string>
-    <string name="ignore1">You ignore the voices and continue walking.</string>
-    <string name="lucky">The zombie trips over itself and smashes its face into the ground, effectively killing it. You\'re safe!</string>
+    <string name="ignore1">You continue walking. Along the way you encounter a zombie but strangely enough, it does not try to attack you.</string>
+    <string name="befriend">Attempt to befriend</string>
+    <string name="befriend1">You attempt to talk to the zombie but it can only make distressed noises.</string>
+    <string name="offerFood">Offer food</string>
+    <string name="offerFood1">You attempt to give the zombie a granola bar that you had in your pocket. The zombie looks offended at your offer and bites your neck and turns you into a zombie.</string>
+    <string name="offerMoney">Offer money</string>
+    <string name="offerMoney1">You attempt to give the zombie your wallet. It happily accepts and motions for you to come with it.</string>
+    <string name="follow">Follow</string>
+    <string name="follow1">You follow the zombie for many miles, passing by empty towns and roads until finally you get to a rundown building. Inside is a large group of zombies.</string>
+    <string name="stay">Stay</string>
+    <string name="stay1">You walk inside and they sit you down. The explain to you over writing that they are a group of non violent zombies and would like to cohabit with humans peacefully. They would like your help spreading the word.</string>
+    <string name="accept2">You accept their proposal. Over the next 3 years, you travel with their group to spread the word and eventually generate enough money and support to buy a small apartment complex for humans and zombies to live in together.
+    Violent zombies still exist and disrupt your new everyday life but you learn to live with it. You get married to a zombie and have half zombie kids and live happily ever after.</string>
+    <string name="refuse2">You refuse their offer and go about your way. Just as you are walking out, you get attacked by a violent zombie. The peaceful zombies try to help you but its too late and you die :(</string>
+    <string name="run2">You\'re weirded out by this interaction and attempt to run away. The zombie gets offended and eats you :(</string>
+    <string name="attack">Attack</string>
 
+    <string name="lucky">The zombie trips over itself and smashes its face into the ground, effectively killing it. Just when you think you\'re safe, another zombie shows up! </string>
+    <string name="trip">You trip over a rock and the zombie attacks and kills you :(</string>
+    <string name="squareUp1">You start fist fighting with the zombie and ultimately win. Fighting a zombie isn\'t easy and you are exhausted. Do you...</string>
+    <string name="break1">Take a break</string>
     <string name="person">You see someone running toward you in the distance.</string>
     <string name="look">You run to the side and look for a place to hide</string>
     <string name="bushes">Bushes</string>
@@ -44,7 +62,11 @@
     <string name="treat">Treat them</string>
     <string name="treat1">You tend to their wounds. They thank you by giving you their extra supplies.</string>
     <string name="ally">Form a group</string>
+    <string name="ally1">You guys form a group and walk into the nearest city. Which way do you guys walk towards?</string>
     <string name="alone">Continue alone</string>
+    <string name="alone1">You both go your separate ways. Unfortunately for you, you break your leg and become an easy target for zombies. Probably should\'ve formed a group when you
+    had the chance, huh? You limp away but the zombies catch up to you in no time and eat you :(</string>
+
     <string name="findHelp">Find Help</string>
     <string name="findHelp1">You run off in search of help. Along the way you run into a zombie. Which weapon do you use to fight?</string>
     <string name="brick">Throw a brick</string>
@@ -52,7 +74,19 @@
     <string name="pipe">Swing a pipe</string>
     <string name="pipe1">You successfully kill the zombie and continue on.</string>
     <string name="town">Walk into town</string>
-    <string name="town1">As you walk into town you notice that there are no people around.</string>
+    <string name="town1">As you walk into the city you notice that there are no people around. Which way do you go?</string>
+    <string name="building">Buildings</string>
+    <string name="house">Houses</string>
+    <string name="papers">You enter an empty building and discover some scientific papers about a dangerous chemical leak. The papers suggest that an antidote is in the building somewhere.</string>
+    <string name="lookcure">Look for cure</string>
+    <string name="lookcure1">You walk through the building until you come across a lab. You come across an important looking vial.</string>
+    <string name="pick">Pick up</string>
+    <string name="pick1">You pick up the vial to inspect it but being the clumsy person you are, you drop the vial and it shatters and all the fluid inside spills
+    everywhere. Unfortunately for you, that was humanity\'s only hope for survival. In about a year, the entire earth is overrun with zombies and not a
+    single human is left alive.</string>
+    <string name="leave">Leave</string>
+    <string name="leave1">In shock, you run out of the building. As soon as you go outside, a zombie attacks and eats you :(</string>
+
     <string name="goBack">Go back</string>
     <string name="goBack1">You run back towards the injured person and see them being eaten by a zombie.</string>
     <string name="help">Help them</string>
