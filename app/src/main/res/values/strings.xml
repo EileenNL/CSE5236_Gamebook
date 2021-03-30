@@ -18,12 +18,15 @@
     <string name="refuse1">You refuse the vaccine and walk out. As you walk, you come across an empty house.</string>
     <string name="enterHouse">Enter house</string>
     <string name="continueWalking">Continue walking</string>
-    <string name="continueWalking1">Continue walking</string>
+    <string name="continueWalking1">You continue walking and come across a zombie</string>
+    <string name="squareUp">Square up</string>
+    <string name="dead">The zombie kills you :(</string>
+
     <string name="steal">Steal their supplies</string>
-    <string name="steal1">You attempt to steal their supplies but they stop and restrain you. You get thrown to a group od hungry zombies and they eat you :(</string>
+    <string name="steal1">You attempt to steal their supplies but they stop and restrain you. You get thrown to a group of hungry zombies and they eat you :(</string>
     <string name="ignore">Ignore it</string>
     <string name="ignore1">You ignore the voices and continue walking.</string>
-    <string name="dead">The zombie kills you :(</string>
+    <string name="lucky">The zombie trips over itself and smashes its face into the ground, effectively killing it. You\'re safe!</string>
 
     <string name="person">You see someone running toward you in the distance.</string>
     <string name="look">You run to the side and look for a place to hide</string>
@@ -52,7 +55,6 @@
     <string name="town1">As you walk into town you notice that there are no people around.</string>
     <string name="goBack">Go back</string>
     <string name="goBack1">You run back towards the injured person and see them being eaten by a zombie.</string>
-    <string name="run1"></string>
     <string name="help">Help them</string>
 
     <string name="Name"></string>
