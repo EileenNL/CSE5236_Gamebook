@@ -4,12 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.content.res.Configuration;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class DisplayMessageActivity extends AppCompatActivity {
+    private int currentScreenOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
     public static final String EXTRA_MESSAGE2 = "com.example.cse5236.MESSAGE2";
     private Button mOption1;
     private Button mOption2;
@@ -29,6 +34,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_message);
+
 
         final String[] message = new String[1];
         final User[] user = new User[1];
@@ -222,4 +228,6 @@ public class DisplayMessageActivity extends AppCompatActivity {
             }
         });*/
     }
+
+
 }

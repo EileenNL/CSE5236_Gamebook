@@ -6,17 +6,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.widget.Toast;
 
 import android.os.Bundle;
 import android.view.View;
 
 public class EnterName extends AppCompatActivity {
+    private int currentScreenOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
+
     public static final String EXTRA_MESSAGE = "com.example.cse5236.MESSAGE";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_name);
     }
+
+
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText editText = (EditText) findViewById(R.id.editTextName);
