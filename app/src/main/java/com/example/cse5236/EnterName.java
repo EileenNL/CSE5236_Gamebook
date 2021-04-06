@@ -7,11 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
-import android.widget.Toast;
-
-import android.os.Bundle;
-import android.view.View;
+import android.widget.TextView;
 
 public class EnterName extends AppCompatActivity {
     private int currentScreenOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
@@ -22,18 +18,40 @@ public class EnterName extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_name);
+        TextView invalidPasswordText = findViewById(R.id.invalidPasswordText);
+        invalidPasswordText.setVisibility(View.INVISIBLE);
     }
 
 
     public void sendMessage(View view) {
         Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editTextName);
-        String message = editText.getText().toString();
+        EditText usernameText = (EditText) findViewById(R.id.editTextUsername);
+        EditText passwordText = (EditText) findViewById(R.id.editTextPassword);
+
+        String username = usernameText.getText().toString();
+        String password = passwordText.getText().toString();
         Log.i("EnterName", "Proceeding to display message.");
-        User user = new User(message, 0, null);
-        user.writeNewUser();
-        intent.putExtra(EXTRA_MESSAGE, user);
-        startActivity(intent);
+        final User[] user = {new User(username, password, 0, null)};
+        user[0].LoginUser();
+        UserCreatedListener listener = new UserCreatedListener(){
+            @Override
+            public void userCreated(){
+                intent.putExtra(EXTRA_MESSAGE, user[0]);
+                startActivity(intent);
+            }
+            @Override
+            public void userFound(User updatedUser){
+                user[0] = updatedUser;
+                intent.putExtra(EXTRA_MESSAGE, user[0]);
+                startActivity(intent);
+            }
+            @Override
+            public void invalidPassword(){
+                TextView invalidPasswordText = findViewById(R.id.invalidPasswordText);
+                invalidPasswordText.setVisibility(View.VISIBLE);
+            }
+        };
+    new UserEvents().addListener(listener);
     }
 
     protected void onPause() {

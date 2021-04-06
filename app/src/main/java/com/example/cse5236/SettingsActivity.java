@@ -42,7 +42,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         user[0] = (User) intent.getSerializableExtra(EXTRA_MESSAGE2);
 
-        myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        myref.child("users").child(user[0].getName()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -63,7 +63,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user[0].setScore(0);
-                myref.child("users").child(user[0].getId()).setValue(user[0]);
+                myref.child("users").child(user[0].getName()).setValue(user[0]);
                 textView.setText(user[0].getName() + ": " + user[0].getScore());
             }
         });
@@ -71,7 +71,7 @@ public class SettingsActivity extends AppCompatActivity {
         startOver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myref.child("users").child(user[0].getId()).removeValue();
+                myref.child("users").child(user[0].getName()).removeValue();
                 Intent intent = new Intent(SettingsActivity.this, EnterName.class);
                 SettingsActivity.this.startActivity(intent);
             }

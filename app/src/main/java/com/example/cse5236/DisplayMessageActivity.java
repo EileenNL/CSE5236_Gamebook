@@ -44,12 +44,12 @@ public class DisplayMessageActivity extends AppCompatActivity {
         user[0] = (User) intent.getSerializableExtra(EnterName.EXTRA_MESSAGE);
 
         TextView nameText = findViewById(R.id.textView4);
-        myref.child("users").child(user[0].getId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        myref.child("users").child(user[0].getName()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
                     user[0] = task.getResult().getValue(User.class);
-                    Log.i("TESTTHING2", "ID: " + user[0].getId());
+                    Log.i("TESTTHING2", "Username: " + user[0].getName());
                     nameText.setText(user[0].getName() + ": " + user[0].getScore());
                     message[0] = "Hi "+ intent.getStringExtra(EnterName.EXTRA_MESSAGE) + "! Welcome to Gamebook!";
                 }
@@ -140,7 +140,6 @@ public class DisplayMessageActivity extends AppCompatActivity {
                 Intent intent = new Intent(DisplayMessageActivity.this, SettingsActivity.class);
                 intent.putExtra(EXTRA_MESSAGE2, user[0]);
                 Log.i("TESTTEST", user[0].getName());
-                Log.i("TESTTEST", user[0].getId());
                 startActivity(intent);
             }
         });
@@ -222,7 +221,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
                     int score = user[0].getScore();
                     score++;
                     user[0].setScore(score);
-                    myref.child("users").child(user[0].getId()).setValue(user[0]);
+                    myref.child("users").child(user[0].getName()).setValue(user[0]);
                     nameText.setText(user[0].getName() + ": " + user[0].getScore());
                 /*}
             }
