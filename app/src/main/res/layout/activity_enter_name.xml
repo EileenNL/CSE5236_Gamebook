@@ -10,9 +10,10 @@
         android:id="@+id/textEnterNameBelow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="80dp"
         android:text="Please Log In"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,11 +21,11 @@
         android:id="@+id/invalidPasswordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="124dp"
         android:text="Invalid Password"
         android:textColor="#FF0000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.328"
+        app:layout_constraintHorizontal_bias="0.349"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,33 +41,40 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.396" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="275dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="246dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Password..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
+        app:layout_constraintVertical_bias="0.322" />
 
     <Button
         android:id="@+id/buttonSubmitName"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="154dp"
+        android:layout_marginTop="433dp"
         android:layout_marginEnd="168dp"
-        android:layout_marginBottom="376dp"
+        android:layout_marginBottom="250dp"
         android:onClick="sendMessage"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.384" />
 </androidx.constraintlayout.widget.ConstraintLayout>
