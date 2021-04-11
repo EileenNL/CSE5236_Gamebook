@@ -26,7 +26,7 @@ public class Test1 {
     public ActivityTestRule<EnterName> mActivityTestRule = new ActivityTestRule<>(EnterName.class);
 
     @Test
-    public void enterNameTest2() {
+    public void Test1() {
         ViewInteraction editText = onView(
                 allOf(withId(R.id.editTextUsername), withText("Username..."),
                         withParent(withParent(withId(android.R.id.content))),

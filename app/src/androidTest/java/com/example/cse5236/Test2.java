@@ -38,7 +38,7 @@ public class Test2 {
     public ActivityTestRule<EnterName> mActivityTestRule = new ActivityTestRule<>(EnterName.class);
 
     @Test
-    public void enterNameTest3() {
+    public void Test2() {
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.editTextUsername), withText("Username..."),
                         childAtPosition(
