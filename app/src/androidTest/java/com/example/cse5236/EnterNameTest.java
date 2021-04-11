@@ -33,7 +33,7 @@ public class EnterNameTest extends ActivityTestRule<EnterName> {
     }
     @Test
     public void testEmptyEditText() {
-        assertEquals("Username ...", mUsername.getText().toString());
+        assertEquals("Username...", mUsername.getText().toString());
         assertEquals("Password...", mPassword.getText().toString());
     }
 
