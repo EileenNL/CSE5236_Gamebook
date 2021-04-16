@@ -25,6 +25,7 @@ import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -38,49 +39,29 @@ public class Test3 {
     public ActivityTestRule<EnterName> mActivityTestRule = new ActivityTestRule<>(EnterName.class);
 
     @Test
-    public void Test3() {
+    public void test3() {
         ViewInteraction appCompatEditText = onView(
-                allOf(withId(R.id.editTextUsername), withText("Username..."),
+                allOf(withId(R.id.editTextUsername), withContentDescription("Enter your Username"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 2),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("nina"));
+        appCompatEditText.perform(replaceText("steve"), closeSoftKeyboard());
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.editTextUsername), withText("nina"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText2.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.editTextPassword), withText("Password..."),
+                allOf(withId(R.id.editTextPassword), withContentDescription("Enter your password"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("123"));
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editTextPassword), withText("123"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                3),
-                        isDisplayed()));
-        appCompatEditText4.perform(closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText("123"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.buttonSubmitName), withText("Submit"),
+                allOf(withId(R.id.buttonSubmitName), withText("Submit"), withContentDescription("Submit"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -95,29 +76,33 @@ public class Test3 {
             e.printStackTrace();
         }
 
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.button2), withText("Right"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                3),
+                        isDisplayed()));
+        materialButton2.perform(click());
+
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textView4), withText("nina: 0"),
+                allOf(withId(R.id.textView), withText("You see someone running toward you in the distance."),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        textView.check(matches(withText("nina: 0")));
+        textView.check(matches(withText("You see someone running toward you in the distance.")));
 
         ViewInteraction button = onView(
-                allOf(withId(R.id.button4), withText("SETTINGS"),
+                allOf(withId(R.id.button), withText("HIDE"),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
         button.check(matches(isDisplayed()));
 
         ViewInteraction button2 = onView(
-                allOf(withId(R.id.button), withText("LEFT"),
+                allOf(withId(R.id.button2), withText("HELP THEM"),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
         button2.check(matches(isDisplayed()));
-
-        ViewInteraction button3 = onView(
-                allOf(withId(R.id.button2), withText("RIGHT"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        button3.check(matches(isDisplayed()));
     }
 
     private static Matcher<View> childAtPosition(

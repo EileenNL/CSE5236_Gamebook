@@ -27,17 +27,6 @@ public class Test1 {
 
     @Test
     public void Test1() {
-        ViewInteraction editText = onView(
-                allOf(withId(R.id.editTextUsername), withText("Username..."),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        editText.check(matches(isDisplayed()));
-
-        ViewInteraction editText2 = onView(
-                allOf(withId(R.id.editTextPassword), withText("Password..."),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        editText2.check(matches(isDisplayed()));
 
         ViewInteraction button = onView(
                 allOf(withId(R.id.buttonSubmitName), withText("SUBMIT"),
