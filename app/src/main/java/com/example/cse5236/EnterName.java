@@ -3,6 +3,7 @@ package com.example.cse5236;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -30,7 +31,6 @@ public class EnterName extends AppCompatActivity {
 
         String username = usernameText.getText().toString();
         String password = passwordText.getText().toString();
-        Log.i("EnterName", "Proceeding to display message.");
         final User[] user = {new User(username, password, 0, null)};
         user[0].LoginUser();
         UserCreatedListener listener = new UserCreatedListener(){

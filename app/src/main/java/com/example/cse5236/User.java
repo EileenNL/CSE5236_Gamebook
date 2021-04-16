@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private String mUsername;
-    private String mPassword = "password34";
+    private String mPassword;
     private int mScore;
     private String mCurrent;
 
@@ -55,8 +55,7 @@ public class User implements Serializable {
         mScore = score;
     }
 
-    public boolean LoginUser(){
-        boolean success = false;
+    public void LoginUser(){
         User[] users = new User[1];
         DatabaseReference usernameRef = mDatabase.child("users").child(mUsername);
         final boolean[] writeUser = {false};
@@ -93,7 +92,6 @@ public class User implements Serializable {
 //            valid = true;
 //        }
         usernameRef.addListenerForSingleValueEvent(eventListener);
-        return success;
     }
 
     public void writeNewUser() {

@@ -49,7 +49,6 @@ public class DisplayMessageActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
                     user[0] = task.getResult().getValue(User.class);
-                    Log.i("TESTTHING2", "Username: " + user[0].getName());
                     nameText.setText(user[0].getName() + ": " + user[0].getScore());
                     message[0] = "Hi "+ intent.getStringExtra(EnterName.EXTRA_MESSAGE) + "! Welcome to Gamebook!";
                 }
@@ -139,7 +138,6 @@ public class DisplayMessageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DisplayMessageActivity.this, SettingsActivity.class);
                 intent.putExtra(EXTRA_MESSAGE2, user[0]);
-                Log.i("TESTTEST", user[0].getName());
                 startActivity(intent);
             }
         });
