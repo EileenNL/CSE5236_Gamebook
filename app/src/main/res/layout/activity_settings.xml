@@ -24,7 +24,8 @@
         android:text="@string/edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Reset Score Progress"/>
 
     <Button
         android:id="@+id/button5"
@@ -34,7 +35,8 @@
         android:text="@string/startOver"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Delete Current User"/>
 
     <Button
         android:id="@+id/button6"
@@ -44,5 +46,6 @@
         android:text="@string/returnGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="Return"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

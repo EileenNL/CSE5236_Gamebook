@@ -39,7 +39,8 @@
         app:layout_constraintEnd_toEndOf="@+id/BlankFragment"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/BlankFragment"
-        app:layout_constraintTop_toTopOf="@+id/BlankFragment" />
+        app:layout_constraintTop_toTopOf="@+id/BlankFragment"
+        />
 
     <Button
         android:id="@+id/button2"
@@ -52,7 +53,8 @@
         app:layout_constraintEnd_toEndOf="@+id/BlankFragment"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="@+id/BlankFragment"
-        app:layout_constraintTop_toTopOf="@+id/BlankFragment" />
+        app:layout_constraintTop_toTopOf="@+id/BlankFragment"
+        />
 
     <Button
         android:id="@+id/button4"
@@ -62,7 +64,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/settings"
         app:layout_constraintStart_toStartOf="@+id/BlankFragment"
-        app:layout_constraintTop_toTopOf="@+id/BlankFragment" />
+        app:layout_constraintTop_toTopOf="@+id/BlankFragment"
+        android:contentDescription="Settings"/>
 
     <TextView
         android:id="@+id/textView4"
